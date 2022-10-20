@@ -52,15 +52,64 @@ va_arg (man 3 va_arg)
  Handle the custom conversion specifier R that prints the rot13'ed string.
  All above options should work well together.
 # File Descriptions #
-_printf.c: - contains the fucntion _printf, which uses the prototype int _printf(const char *format, ...);. The format string is composed of zero or more directives. See man 3 printf for more detail. _printf will return the number of characters printed (excluding the null byte used to end output to strings) and will write output to stdout, the standard output stream.
-_putchar.c : - contains the function _putchar, which writes a character to stdout.
 main.h: - contains all function prototypes used for _printf.
-man_3_printf: - manual page for the custom _printf function.
-print_chars.c: - contains the functions print_c, print_s, print_S, and print_r which handle the conversion specifiers c, s, S, and r, respectively, as well as hex_print, which prints a char's ascii value in uppercase hex
-print_numbers.c: - contains the functions print_i and print_d, which handle the conversion specifiers i and d, respectively
-print_hex.c: - contains the functions print_hex, which prints an unsigned int in hexidecimal form, print_x, print_X, and print_p, which handle the conversion specifiers x, X, and p, respectively
-print_unsigned_int.c: - contains the functions print_u, print_o, and print_b, which handle the conversion specifiers u, o, and b, respectively
-print_rot13.c - contains the function print_R, which handles the conversion specifier R
+Flags (In development...)
+
+## Flag Description ##
+
+Left-justify the output within the field width that was given; Right justification is the default (see width sub-specifier).
+Preceeds the result with a plus or minus sign (+ or -) even for positive numbers. By default, only negative numbers are preceded with a - sign.
+(space) If no sign is going to be written, a blank space is inserted before the value.
+
+Used with o, x or X specifiers the value is preceeded with 0, 0x or 0X respectively for values different than zero.
+0 Left-pads the number with zeroes (0) instead of spaces when padding is specified (see width sub-specifier).
+
+Width (In development...)
+
+## Width Description ##
+
+(number) Minimum number of characters to be printed. If the value to be printed is shorter than this number, the result is padded with blank spaces. The value is not truncated even if the result is larger.
+
+The width is not specified in the format string, but as an additional integer value argument preceding the argument that has to be formatted.
+
+## Precision Description ##
+
+.(number) For integer specifiers (d, i, o, u, x, X): precision specifies the minimum number of digits to be written. If the value to be written is shorter than this number, the result is padded with leading zeros. The value is not truncated even if the result is longer. A precision of 0 means that no character is written for the value 0. For s: this is the maximum number of characters to be printed. By default all characters are printed until the ending null character is encountered. If the period is specified without an explicit value for precision, 0 is assumed.
+
+Length modifiers (In development...)
+
+Modifier/Specifier d & i u, o, x, X c s p
+
+none int unsigned int int char pointer void pointer
+
+h short int unsigned short int
+
+l long int unsigned long int
+
+Files contained in this repository
+
+man_3_printf Man page of the _printf() function.
+
+main.h Header file with the data type struct, standard libraries and custom prototypes
+
+funcs.c
+
+funcs1.c
+
+get_flags.c
+
+get_precision.c
+
+get_size.c
+
+handle_print.c
+
+utils.c
+
+write_handlers.c
+
+
+
 # Authors #
 Stephen Okok | @StephOkok
 
